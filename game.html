@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body 
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-size: 7.5vmin;
+        }
+        #gameGrid {
+            display: grid;
+            grid-template-columns: repeat(var(--grid-size), var(--cell-size));
+            grid-template-rows: repeat(var(--grid-size), var(--cell-size));
+            background-color: #CCC;
+            gap: var(--cell-gap);
+            padding: var(--cell-gap);
+            position: relative;
+            border: 2px solid black;
+        }
+        .cell {
+            border-radius: 1vmin;
+            background-color: #AAA;
+        }
+        .tile {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: var(--cell-size);
+            height: var(--cell-size);
+            top: calc(var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+            left: calc(var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+            background-color: red;
+            border-radius: 1vmin;
+            font-weight: bold;
+            background-color: HSL(200,50%,var(--background-lightness));
+            color:hsl(200,25%,var(--text-lightness));
+            animation:show 300ms ease-in-out;
+            transition:200ms ease-in-out;
+        }
+        @keyframes show 
+        {
+            0%
+            {
+                opacity: 0.5;
+                transform: scale(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="gameGrid"></div>
+    <script type="module" src="game.js"></script>
+</body>
+</html>
